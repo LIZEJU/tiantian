@@ -363,13 +363,16 @@ class OrderPayView(View):
 
         # 业务处理:使用python sdk调用支付宝的支付接口
         # 初始化
+
+        alipay_public_key_string = open(os.path.join(settings.BASE_DIR, 'apps/order/alipay_public_key.pem')).read()
+        app_private_key_string = open(os.path.join(settings.BASE_DIR, 'apps/order/app_private_key.pem')).read()
         alipay = AliPay(
-            appid="2016090800464054", # 应用id
+            appid="2016091700533972", # 应用id
             app_notify_url=None,  # 默认回调url
-            app_private_key_path=os.path.join(settings.BASE_DIR, 'apps/order/app_private_key.pem'),
-            alipay_public_key_path=os.path.join(settings.BASE_DIR, 'apps/order/alipay_public_key.pem'), # 支付宝的公钥，验证支付宝回传消息使用，不是你自己的公钥,
+            app_private_key_string=app_private_key_string,
+            alipay_public_key_string=alipay_public_key_string, # 支付宝的公钥，验证支付宝回传消息使用，不是你自己的公钥,
             sign_type="RSA2",  # RSA 或者 RSA2
-            debug=True  # 默认False
+            debug=True  # 默认False,是一个实际环境，true:沙箱环境
         )
 
         # 调用支付接口
