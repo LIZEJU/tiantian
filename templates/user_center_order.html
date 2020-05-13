@@ -66,6 +66,14 @@
                 if (data.res == 3){
                     // 引导用户到支付页面
                     window.open(data.pay_url)
+                    $.post('/order/check',params,function (data) {
+                        if (data.res==3){
+                            alert(data.message)
+                            location.reload()
+                        }else{
+                            alert(data.errmsg)
+                        }
+                    })
                 }
                 else{
                     alert(data.errmsg)
