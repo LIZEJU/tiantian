@@ -24,7 +24,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 SECRET_KEY = 'q_e6_zw4-2^2^_se_(clkcrb_k)d83fy#3(r#z*@!i&8d_q1lw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*",]
 
@@ -87,7 +87,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'tiantian',
-        'HOST':'172.16.159.130',
+        'HOST':'127.0.0.1',
         'PORT':3306,
         'USER':'root',
         'PASSWORD':'1234'
@@ -143,7 +143,7 @@ EMAIL_FROM = 'm18611694189@163.com'
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://172.16.159.130:6379/9",
+        "LOCATION": "redis://127.0.0.1:6379/9",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
@@ -164,7 +164,7 @@ DEFAULT_FILE_STORAGE='utils.fdfs.storage.FDFSStorage'
 FDFS_CLIENT_CONF='./utils/fdfs/client.conf'
 
 # 设置fdfs存储服务器上nginx的IP和端口号
-FDFS_URL='http://172.16.159.130:8888/'
+FDFS_URL='http://127.0.0.1:8888/'
 
 # 全文检索框架的配置
 HAYSTACK_CONNECTIONS = {
@@ -182,3 +182,5 @@ HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 # 指定搜索结果每页显示的条数
 HAYSTACK_SEARCH_RESULTS_PER_PAGE=1
+
+
